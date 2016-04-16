@@ -1,5 +1,21 @@
 import './addUser.html';
 
+Template.addUser.onCreated(function() {
+  var self = this;
+  self.autorun(function() {
+	document.title = "Add User";
+    self.subscribe('users');	
+  });
+});
+
+Template.addUser.helpers({
+  requiresAdminAccess: function() {
+	if (!Meteor.user() || Meteor.user().profile.admin === false) {
+		FlowRouter.go('accessDenied');
+	} 
+  }
+});
+
 Template.addUser.events({
   'submit form': function(e) {
     e.preventDefault();
@@ -18,8 +34,10 @@ Template.addUser.events({
 
 	Accounts.createUser(newUser, function(error){
       if (error) {
-        throwError(error.reason);
+        //throwError(error.reason);
       } else {
+		var profilePath = '/users/' + newUser.username;
+		FlowRouter.go(profilePath);		  
         Router.go('userPage', {_username: newUser.username});
       }		
 	});

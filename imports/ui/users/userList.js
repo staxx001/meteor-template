@@ -9,6 +9,11 @@ Template.userList.onCreated(function() {
 });
 
 Template.userList.helpers({
+  requiresAdminAccess: function() {
+	if (!Meteor.user() || Meteor.user().profile.admin === false) {
+		FlowRouter.go('accessDenied');
+	} 
+  },  
   users: function() {
     return Meteor.users.find({}, {sort: {'profile.lastName': 1, 'profile.firstName': 1}});
   }

@@ -5,6 +5,12 @@
 				<h2>Users</h2>
 			</div>
 			{{#if Template.subscriptionsReady}}
+				{{requiresAdminAccess}}
+				<div class="users-list card">
+					{{#each users}}
+						{{> userListItem}}
+					{{/each}}
+				</div>
 				{{#if currentUser.profile.admin}}
 					<div class="card">
 					<h3>
@@ -13,12 +19,7 @@
 						</a>
 					</h3>
 					</div>
-				{{/if}}				
-				<div class="users-list card">
-					{{#each users}}
-						{{> userListItem}}
-					{{/each}}
-				</div>
+				{{/if}}					
 			{{else}}
 				<div class="card">
 					<h3>loading users...</h3>
