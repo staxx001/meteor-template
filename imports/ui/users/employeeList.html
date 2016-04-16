@@ -1,0 +1,39 @@
+<template name="employeeList">
+	{{#if Template.subscriptionsReady}}
+		<div class="row">
+			<div class="col-xs-12 col-lg-6">
+				<div class="card">
+					<h2>Employees</h2>
+				</div>			
+				{{#if hasEmployees}}
+					<div class="employees-list card">
+						{{#each employees}}
+							{{> userListItem}}
+						{{/each}}
+					</div>
+				{{else}}
+				    <div class="card">
+				    	<p class="mg-top">There are currently no employees.</p>
+				    </div>					
+				{{/if}}
+				{{#if currentUser.profile.admin}}
+					<div class="card">
+					<h3>
+						<a href="/">
+							<i class="fa fa-user-plus">&nbsp;&nbsp;Add Employee</i>
+						</a>
+					</h3>
+					</div>
+				{{/if}}					
+			</div>	
+		</div>  
+	{{else}}
+		<div class="row">
+			<div class="col-xs-12 col-lg-6">
+				<div class="card">
+					<h3>loading employees...</h3>
+				</div>
+			</div>
+		</div>	
+	{{/if}} 
+</template>

@@ -1,0 +1,39 @@
+<template name="clientList">
+	{{#if Template.subscriptionsReady}}
+		<div class="row">
+			<div class="col-xs-12 col-lg-6">
+				<div class="card">
+					<h2>Clients</h2>
+				</div>			
+				{{#if hasClients}}
+					<div class="clients-list card">
+						{{#each clients}}
+							{{> userListItem}}
+						{{/each}}
+					</div>
+				{{else}}
+				    <div class="card">
+				    	<p class="mg-top">There are currently no clients.</p>
+				    </div>				
+				{{/if}}
+				{{#if currentUser.profile.admin}}
+					<div class="card">
+					<h3>
+						<a href="/">
+							<i class="fa fa-user-plus">&nbsp;&nbsp;Add Client</i>
+						</a>
+					</h3>
+					</div>
+				{{/if}}					
+			</div>	
+		</div>  
+	{{else}}
+		<div class="row">
+			<div class="col-xs-12 col-lg-6">
+				<div class="card">
+					<h3>loading clients...</h3>
+				</div>
+			</div>
+		</div>	
+	{{/if}}
+</template>

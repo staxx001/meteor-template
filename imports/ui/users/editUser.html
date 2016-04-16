@@ -1,0 +1,111 @@
+<template name="editUser">
+	{{#if Template.subscriptionsReady}}
+		<div class="row">
+			<div class="col-xs-12">
+			    <div class="card">
+			      <h3>{{user.username}}</h3>
+			    </div>				
+			</div>	
+		</div>  
+		<div class="row">
+			<div class="col-xs-12 col-lg-4">
+				<div class="card">
+					<h3>Profile</h3>
+					<hr>		
+					<form class="clearfix">
+						<table class="table table-bordered">
+							<tbody>
+								{{#if currentUser.profile.admin}}
+									<tr>
+										<td width="120">Admin:</td>
+										<td>
+											{{#if user.profile.admin}}	
+												<input name="admin" type="checkbox" checked>
+											{{else}}
+												<input name="admin" type="checkbox">
+											{{/if}}
+										</td>
+									</tr>
+									<tr>
+										<td width="120">Client:</td>
+										<td>
+											{{#if user.profile.client}}	
+												<input name="client" type="checkbox" checked>
+											{{else}}
+												<input name="client" type="checkbox">
+											{{/if}}
+										</td>
+									</tr>
+									<tr>
+										<td width="120">Employee:</td>
+										<td>
+											{{#if user.profile.employee}}
+												<input name="employee" type="checkbox" checked>
+											{{else}}
+												<input name="employee" type="checkbox">
+											{{/if}}
+										</td>
+									</tr>							
+								{{/if}}							
+								<tr>
+									<td width="120">Username:</td>
+									<td>{{ user.username }}</td>
+								</tr>
+								<tr>
+									<td width="120">User Since:</td>
+									<td>{{ timeAgo }}</td>
+								</tr>			
+								<tr>
+									<td width="120">First Name:</td>
+									<td>		
+										<div class="form-group">
+											<input type="text" class="form-control" id="firstName" name="firstName" value="{{user.profile.firstName}}">
+										</div>								  
+									</td>
+								</tr>
+								<tr>
+									<td width="120">Last Name:</td>
+									<td>			
+										<div class="form-group">
+											<input type="text" class="form-control" id="lastName" name="lastName" value="{{user.profile.lastName}}">
+										</div>								  
+									</td>
+								</tr>
+								<tr>
+									<td width="120">Phone:</td>
+									<td>			
+										<div class="form-group">
+											<input type="text" class="form-control" id="phone" name="phone" value="{{user.profile.phone}}">
+										</div>								  
+									</td>
+								</tr>
+								<tr>
+									<td width="120">Email:</td>
+									<td>			
+										<div class="form-group">
+											<input type="text" class="form-control" id="email" name="email" value="{{user.profile.email}}">
+										</div>								  
+									</td>
+								</tr>																								
+							</tbody>
+						</table>
+						{{#if isOwner}}
+							<div class="btn-group pull-right">
+								<button type="submit" class="btn btn-primary">Save</button>
+								<button class="btn btn-danger delete">Delete</button>
+							</div>	
+						{{/if}}	
+					</form>
+				</div>
+			</div>
+		</div>
+	{{else}}
+		<div class="row">
+			<div class="col-xs-12">
+			    <div class="card">
+			      <h3>loading user...</h3>
+			    </div>				
+			</div>	
+		</div> 
+	{{/if}}
+</template>

@@ -1,0 +1,93 @@
+<template name="addUser">
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xs-12">
+			    <div class="card">
+			      <h3>Add User</h3>
+			    </div>				
+			</div>	
+		</div>  
+		<div class="row">
+			<div class="col-xs-12 col-lg-4">
+				<div class="card">
+					<h3>Profile</h3>
+					<hr>		
+					<form class="clearfix">
+						<table class="table table-bordered">
+							<tbody>
+								{{#if currentUser.profile.admin}}
+									<tr>
+										<td width="120">Admin:</td>
+										<td>
+											<input name="admin" type="checkbox"/>
+										</td>
+									</tr>
+									<tr>
+										<td width="120">Client:</td>
+										<td>
+											<input name="client" type="checkbox" checked/>
+										</td>
+									</tr>
+									<tr>
+										<td width="120">Employee:</td>
+										<td>
+											<input name="employee" type="checkbox">
+										</td>
+									</tr>							
+								{{/if}}							
+								<tr>
+									<td width="120">Username:</td>
+									<td>
+										<input type="text" class="form-control" id="username" name="username" placeholder="username">							
+									</td>
+								</tr>
+								<tr>
+									<td width="120">Password:</td>
+									<td>
+										<input type="text" class="form-control" id="password" name="password" placeholder="password">							
+									</td>
+								</tr>											
+								<tr>
+									<td width="120">First Name:</td>
+									<td>		
+										<div class="form-group">
+											<input type="text" class="form-control" id="firstName" name="firstName" placeholder="first name">
+										</div>								  
+									</td>
+								</tr>
+								<tr>
+									<td width="120">Last Name:</td>
+									<td>			
+										<div class="form-group">
+											<input type="text" class="form-control" id="lastName" name="lastName" placeholder="last name">
+										</div>								  
+									</td>
+								</tr>
+								<tr>
+									<td width="120">Phone:</td>
+									<td>			
+										<div class="form-group">
+											<input type="text" class="form-control" id="phone" name="phone" placeholder="phone number">
+										</div>								  
+									</td>
+								</tr>
+								<tr>
+									<td width="120">Email:</td>
+									<td>			
+										<div class="form-group">
+											<input type="text" class="form-control" id="email" name="email" placeholder="email address">
+										</div>								  
+									</td>
+								</tr>																								
+							</tbody>
+						</table>
+						<div class="btn-group pull-right">
+							<button type="submit" class="btn btn-primary">Save</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</template>

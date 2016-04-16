@@ -1,0 +1,110 @@
+<template name="userPage">
+	{{#if Template.subscriptionsReady}}
+		<div class="row">
+			<div class="col-xs-12">
+			    <div class="card">
+			      <h3>
+			      	{{user.username}}
+			      	{{#if currentUser.profile.admin}}
+				      	{{#if user.profile.client}}
+				      		- client
+				      	{{/if}}
+				      	{{#if user.profile.employee}}
+				      		- employee
+				      	{{/if}}				      	
+				    {{/if}}  	
+			      </h3>
+			    </div>				
+			</div>	
+		</div>  
+		<div class="row">
+			<div class="col-xs-12 col-lg-4">
+				<div class="card clearfix">
+					<h3>Profile</h3>
+					<hr>
+					<table class="table table-bordered">
+						<tbody>
+							{{#if currentUser.profile.admin}}
+								<tr>
+									<td width="120">Admin:</td>
+									<td>
+										{{#if user.profile.admin}}
+											true
+										{{else}}
+											false
+										{{/if}}
+									</td>
+								</tr>
+								<tr>
+									<td width="120">Employee:</td>
+									<td>
+										{{#if user.profile.employee}}
+											true
+										{{else}}
+											false
+										{{/if}}
+									</td>
+								</tr>								
+								<tr>
+									<td width="120">Client:</td>
+									<td>
+										{{#if user.profile.client}}
+											true
+										{{else}}
+											false
+										{{/if}}
+									</td>
+								</tr>							
+							{{/if}}
+							<tr>
+								<td width="120">Username:</td>
+								<td>{{ user.username }}</td>
+							</tr>
+							<tr>
+								<td width="120">User Since:</td>
+								<td>{{ timeAgo }}</td>
+							</tr>			
+							<tr>
+								<td width="120">First Name:</td>
+								<td>
+									{{user.profile.firstName}}								  
+								</td>
+							</tr>
+							<tr>
+								<td width="120">Last Name:</td>
+								<td>
+									{{user.profile.lastName}}					  
+								</td>
+							</tr>
+							<tr>
+								<td width="120">Phone:</td>
+								<td>
+									<a href="tel:{{user.profile.phone}}">{{user.profile.phone}}</a>					  
+								</td>
+							</tr>
+							<tr>
+								<td width="120">Email:</td>
+								<td>
+									<a href="mailto:{{user.profile.email}}" target="_top">{{user.profile.email}}</a>					  
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					
+					{{#if isOwner}}
+						<a href="/users/{{user.username}}/edit" class="btn btn-primary pull-right">Edit</a>
+					{{/if}}
+						
+				</div>
+			</div>
+		</div>
+	{{else}}
+		<div class="row">
+			<div class="col-xs-12">
+			    <div class="card">
+					<h3>loading...</h3>
+				</div>
+			</div>
+		</div>	
+	{{/if}}
+</template>
