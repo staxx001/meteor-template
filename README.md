@@ -24,6 +24,8 @@ meteor
 ```
 
 ## Log In
+
 Username: admin
+
 Password: password
 
